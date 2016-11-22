@@ -36,7 +36,7 @@ namespace ZenithAssignment.Models
             string[] emails = { "a@a.a", "m@m.m" };
             string[] userNames = { "a", "m" };
 
-            if (userManager.FindByEmailAsync(emails[0]) == null)
+            if (await userManager.FindByEmailAsync(emails[0]) == null)
             {
                 var user = new ApplicationUser
                 {
@@ -51,7 +51,7 @@ namespace ZenithAssignment.Models
 
                 };
 
-                var result = userManager.CreateAsync(user);
+                var result = await userManager.CreateAsync(user);
 
 
 
@@ -60,7 +60,7 @@ namespace ZenithAssignment.Models
                 password.HashPassword(user, "P@$$w0rd");
 
             }
-            if (userManager.FindByEmailAsync(emails[1]) == null)
+            if (await userManager.FindByEmailAsync(emails[1]) == null)
 
             {
 
@@ -78,7 +78,7 @@ namespace ZenithAssignment.Models
 
                 };
 
-                var result = userManager.CreateAsync(user);
+                var result = await userManager.CreateAsync(user);
 
                 var password = new PasswordHasher<ApplicationUser>();
 
