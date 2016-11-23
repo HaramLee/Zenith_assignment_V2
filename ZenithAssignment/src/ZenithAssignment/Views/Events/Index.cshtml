@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ZenithAssignment.Models.Event>
+
+@{
+    ViewBag.Title = "Events";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    <a asp-controller="Events" asp-action="Create">Create New</a>
+</p>
+
+<table class="table">
+    <tr>
+        <th>Activity</th>
+        <th>Created By</th>
+        <th>Date & From Time</th>
+        <th>Date & To Time</th>
+        <th>Active</th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Activity.ActivityDec)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicationUser.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FromDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.EventId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.EventId })
+        </td>
+    </tr>
+}
+</table>
+

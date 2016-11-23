@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using ZenithAssignment.Data;
 
-namespace ZenithAssignment.Data.Migrations
+namespace ZenithAssignment.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161122201303_FirstMigration")]
+    [Migration("20161123040708_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
