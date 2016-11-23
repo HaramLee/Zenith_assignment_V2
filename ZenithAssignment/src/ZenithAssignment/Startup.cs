@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using ZenithAssignment.Data;
 using ZenithAssignment.Models;
 using ZenithAssignment.Services;
+using Microsoft.AspNetCore.Identity;
 
 namespace ZenithAssignment
 {
@@ -60,7 +61,7 @@ namespace ZenithAssignment
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, ApplicationDbContext context, IServiceProvider provider)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, ApplicationDbContext context, IServiceProvider provider, RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -89,7 +90,7 @@ namespace ZenithAssignment
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            seedData.Initialize(context, provider);
+            seedData.Initialize(context, roleManager, userManager);
         }
     }
 }

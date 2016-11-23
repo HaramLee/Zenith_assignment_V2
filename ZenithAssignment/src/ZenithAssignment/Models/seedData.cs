@@ -13,25 +13,27 @@ namespace ZenithAssignment.Models
     {
 
 
-        public static void Initialize(ApplicationDbContext context, IServiceProvider provider)
+        public static void Initialize(ApplicationDbContext context, RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager)
         {
-            getUsers(context, provider);
+            getUsers(context, roleManager, userManager);
       
 
         }
 
 
-        private static async void getUsers(ApplicationDbContext context, IServiceProvider serviceProvider)
+        private static async void getUsers(ApplicationDbContext context, RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager)
         {
-            var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            //var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             //var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            //var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+
 
             if (!await roleManager.RoleExistsAsync("Admin"))
                 await roleManager.CreateAsync(new IdentityRole("Admin"));
 
             if (!await roleManager.RoleExistsAsync("Member"))
                 await roleManager.CreateAsync(new IdentityRole("Member"));
-            var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+
 
             string[] emails = { "a@a.a", "m@m.m" };
             string[] userNames = { "a", "m" };
@@ -49,10 +51,15 @@ namespace ZenithAssignment.Models
 
                     LastName = userNames[0],
 
-             
+                    
                 };
-                var result = await userManager.CreateAsync(user, "P@$$w0rd");
-
+                var password = new PasswordHasher<ApplicationUser>().HashPassword(user, "P@$$w0rd");
+                user.PasswordHash = password;
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(user, "Admin");
+                }
             }
             if (await userManager.FindByEmailAsync(emails[1]) == null)
 
@@ -72,9 +79,13 @@ namespace ZenithAssignment.Models
 
                 };
 
-
-                var result = await userManager.CreateAsync(user, "P@$$w0rd");
-
+                var password = new PasswordHasher<ApplicationUser>().HashPassword(user, "P@$$w0rd");
+                user.PasswordHash = password;
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(user, "Member");
+                }
             }
 
             //context.context.Activities.Add(t => t.ActivityId, getActivities().ToArray());

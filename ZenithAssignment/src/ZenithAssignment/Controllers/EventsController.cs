@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 using ZenithAssignment.Data;
 using ZenithAssignment.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ZenithAssignment.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class EventsController : Controller
     {
         private ApplicationDbContext _context;
