@@ -4,6 +4,19 @@
     ViewBag.Title = "Edit an event";
 }
 
+@section Scripts {
+    <link href="~/lib/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <script src="~/lib/moment/moment.js"></script>
+    <script src="~/lib/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js"></script>
+
+    <script type="text/javascript" >
+        $(function () {
+            $('.datetimepicker1').datetimepicker();
+
+        });
+    </script>
+}
+
 <h2>@ViewData["Title"]</h2>
 
 <form asp-controller="Events" asp-action="Edit" method="post" class="form-horizontal" role="form">
@@ -13,14 +26,14 @@
         <div class="form-group">
             <label asp-for="FromDate" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="FromDate" class="form-control" />
+                <input asp-for="FromDate" class="form-control datetimepicker1" />
                 <span asp-validation-for="FromDate" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
             <label asp-for="ToDate" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="ToDate" class="form-control" />
+                <input asp-for="ToDate" class="form-control datetimepicker1" />
                 <span asp-validation-for="ToDate" class="text-danger"></span>
             </div>
         </div>
@@ -45,3 +58,4 @@
         </div>
     </div>
 </form>
+
