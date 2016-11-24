@@ -40,7 +40,13 @@
         <div class="form-group">
             <label asp-for="ActivityId" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="ActivityId" class="form-control" />
+               @{<select asp-for="ActivityId" class="form-control">
+                    @foreach (var tmp in ViewBag.ActivityStuff)
+                    {
+                        <option value="@tmp.ActivityId">@tmp.ActivityDec</option>
+
+                    }
+                </select>}
                 <span asp-validation-for="ActivityId" class="text-danger"></span>
             </div>
         </div>

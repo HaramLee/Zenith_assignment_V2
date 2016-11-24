@@ -177,6 +177,8 @@ namespace ZenithAssignment.Migrations
                     b.Property<string>("UserName")
                         .HasAnnotation("MaxLength", 256);
 
+                    b.Property<string>("newRoleId");
+
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")

@@ -11,5 +11,6 @@ namespace ZenithAssignment.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string newRoleId { get; set; }
     }
 }

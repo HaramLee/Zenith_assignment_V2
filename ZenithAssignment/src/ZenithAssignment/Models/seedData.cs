@@ -59,6 +59,7 @@ namespace ZenithAssignment.Models
                 if (result.Succeeded)
                 {
                     await userManager.AddToRoleAsync(user, "Admin");
+                    await userManager.AddToRoleAsync(user, "Member");
                 }
             }
             if (await userManager.FindByEmailAsync(emails[1]) == null)

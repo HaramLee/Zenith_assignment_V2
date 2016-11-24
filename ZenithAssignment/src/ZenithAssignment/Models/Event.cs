@@ -35,6 +35,8 @@ namespace ZenithAssignment.Models
 
         [Display(Name = "Creator")]
         public string Id { get; set; }
+
+
         [ForeignKey("Id")]
         public ApplicationUser ApplicationUser { get; set; }
 

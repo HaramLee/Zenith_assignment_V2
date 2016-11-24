@@ -7,6 +7,8 @@ using ZenithAssignment.Data;
 using ZenithAssignment.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Identity;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -16,10 +18,12 @@ namespace ZenithAssignment.Controllers
     public class EventsController : Controller
     {
         private ApplicationDbContext _context;
+        private UserManager<ApplicationUser> userManager;
 
-        public EventsController(ApplicationDbContext context)
+        public EventsController(ApplicationDbContext context, UserManager<ApplicationUser> u)
         {
             _context = context;
+            userManager = u;
         }
 
         // GET: /<controller>/
@@ -31,22 +35,25 @@ namespace ZenithAssignment.Controllers
 
         public IActionResult Create()
         {
+            ViewBag.ActivityStuff = (_context.Activities.ToList());
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Event e)
+        public async Task<IActionResult> Create(Event e)
         {
             if (ModelState.IsValid)
             {
+                e.ApplicationUser = await userManager.FindByNameAsync(User.Identity.Name);
+                e.DateCreated = DateTime.Today;
                 _context.Events.Add(e);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.ActivityStuff = (_context.Activities.ToList());
             return View(e);
-        }
+        }        
 
         public IActionResult Edit(int? id)
         {
@@ -59,23 +66,23 @@ namespace ZenithAssignment.Controllers
             {
                 return NotFound();
             }
-
-            //ViewBag.ActivityId = new SelectList(db.Activities, "ActivityId", "ActivityDec", @event.ActivityId);
-            //ViewBag.Id = new SelectList(db.Users, "Id", "UserName", @event.Id);
-            ViewBag.e = e;
+            ViewBag.ActivityStuff = (_context.Activities.ToList());
             return View(e);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit([Bind(include: "EventId,ActivityId,DateCreated,FromDate,Id,IsActive,ToDate")] Event e)
+        public async Task<IActionResult> Edit([Bind(include: "EventId,ActivityId,DateCreated,FromDate,Id,IsActive,ToDate")] Event e)
         {
             if (ModelState.IsValid)
             {
+                e.ApplicationUser = await userManager.FindByNameAsync(User.Identity.Name);
                 _context.Entry(e).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
+
                 return RedirectToAction("Index");
             }
+            ViewBag.ActivityStuff = (_context.Activities.ToList());
             return View(e);
         }
 
