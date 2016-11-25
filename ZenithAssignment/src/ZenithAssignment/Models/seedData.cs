@@ -12,7 +12,6 @@ namespace ZenithAssignment.Models
     public class seedData
     {
 
-
         public static void Initialize(ApplicationDbContext context, RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager)
         {
             getUsers(context, roleManager, userManager);
