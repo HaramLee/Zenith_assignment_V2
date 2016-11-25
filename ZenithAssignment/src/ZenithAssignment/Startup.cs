@@ -13,6 +13,8 @@ using ZenithAssignment.Data;
 using ZenithAssignment.Models;
 using ZenithAssignment.Services;
 using Microsoft.AspNetCore.Identity;
+using OpenIddict;
+using CryptoHelper;
 
 namespace ZenithAssignment
 {
@@ -55,6 +57,33 @@ namespace ZenithAssignment
 
             services.AddMvc();
 
+            // Register the OpenIddict services, including the default Entity Framework stores.
+            services.AddOpenIddict<ApplicationDbContext>()
+                // Register the ASP.NET Core MVC binder used by OpenIddict.
+                // Note: if you don't call this method, you won't be able to
+                // bind OpenIdConnectRequest or OpenIdConnectResponse parameters.
+                .AddMvcBinders()
+
+                // Enable the authorization, logout, token and userinfo endpoints.
+                .EnableAuthorizationEndpoint("/connect/authorize")
+                .EnableLogoutEndpoint("/connect/logout")
+                .EnableTokenEndpoint("/connect/token")
+                .EnableUserinfoEndpoint("/Account/Userinfo")
+
+                // Note: the Mvc.Client sample only uses the code flow and the password flow, but you
+                // can enable the other flows if you need to support implicit or client credentials.
+                .AllowAuthorizationCodeFlow()
+                .AllowPasswordFlow()
+                .AllowRefreshTokenFlow()
+
+                // During development, you can disable the HTTPS requirement.
+                .DisableHttpsRequirement()
+
+                // Register a new ephemeral key, that is discarded when the application
+                // shuts down. Tokens signed using this key are automatically invalidated.
+                // This method should only be used during development.
+                .AddEphemeralSigningKey();
+
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
@@ -82,6 +111,9 @@ namespace ZenithAssignment
             app.UseIdentity();
 
             // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
+            app.UseOAuthValidation();
+
+            app.UseOpenIddict();
 
             app.UseMvc(routes =>
             {
@@ -90,7 +122,10 @@ namespace ZenithAssignment
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
+
             seedData.Initialize(context, roleManager, userManager);
+
+
         }
     }
 }

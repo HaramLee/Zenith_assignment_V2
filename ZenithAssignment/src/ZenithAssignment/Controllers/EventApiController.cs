@@ -6,10 +6,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ZenithAssignment.Data;
 using ZenithAssignment.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ZenithAssignment.Controllers
 {
-
+    [Authorize(Roles = "Admin")]
     [Route("api/event")]
     public class EventApiController : Controller
     {
