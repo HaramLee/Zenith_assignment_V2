@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ZenithAssignment.Controllers
 {
-    [Authorize(Roles = "Admin")]
+
     [Route("api/activity")]
     public class ActivityApiController : Controller
     {

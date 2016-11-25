@@ -43,7 +43,8 @@ namespace ZenithAssignment
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            
+            services.AddCors();
+
             //services.AddDbContext<ApplicationDbContext>(options =>
             //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -105,6 +106,14 @@ namespace ZenithAssignment
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+
+            // Shows UseCors with CorsPolicyBuilder.
+            app.UseCors(builder =>
+                builder.WithOrigins("http://localhost:5000/")
+                       .AllowAnyHeader()
+                );
+
 
             app.UseStaticFiles();
 
