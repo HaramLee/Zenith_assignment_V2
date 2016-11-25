@@ -45,6 +45,10 @@ namespace ZenithAssignment.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(RolesModel role)
         {
+            if(role == null)
+            {
+                return NotFound();
+            }
             if (ModelState.IsValid)
             {
                 if (!await roleManager.RoleExistsAsync(role.name))
@@ -66,8 +70,89 @@ namespace ZenithAssignment.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddUser([Bind(include: "Id,AccessFailedCount,ConcurrencyStamp,Email,EmailConfirmed,FirstName,LastName,LockoutEnabled,LockoutEnd,NormalizedEmail,NormalizedUserName,PasswordHash,PhoneNumber,PhoneNumberConfirmed,SecurityStamp,TwoFactorEnabled,UserName,newRoleId")] ApplicationUser appUser)
         {
+            if(appUser == null)
+            {
+                return NotFound();
+            }
+            if(appUser.UserName == null)
+            {
+                return View();
+            }
             var userToChange = await userManager.FindByNameAsync(appUser.UserName);
             await userManager.AddToRoleAsync(userToChange, appUser.newRoleId);
+            return RedirectToAction("Index");
+        }
+        
+        public ActionResult RemoveUser(string id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+            ViewBag.name = id;
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RemoveUser([Bind(include: "Id,AccessFailedCount,ConcurrencyStamp,Email,EmailConfirmed,FirstName,LastName,LockoutEnabled,LockoutEnd,NormalizedEmail,NormalizedUserName,PasswordHash,PhoneNumber,PhoneNumberConfirmed,SecurityStamp,TwoFactorEnabled,UserName,newRoleId")] ApplicationUser appUser)
+        {
+            if(appUser == null)
+            {
+                return NotFound();
+            }
+            if (appUser.UserName == null)
+            {
+                return View();
+            }
+            var userToChange = await userManager.FindByNameAsync(appUser.UserName);
+            if(userToChange == null)
+            {
+                return NotFound();
+            }
+            await userManager.RemoveFromRoleAsync(userToChange, appUser.newRoleId);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Edit(string id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+            ViewBag.name = id;
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(RolesModel role)
+        {
+            if(role == null)
+            {
+                return NotFound();
+            }
+            if (ModelState.IsValid)
+            {
+                IdentityRole old = await roleManager.FindByNameAsync(role.priorRole);
+                old.Name = role.name;
+                await roleManager.UpdateAsync(old);
+                return RedirectToAction("Index");
+            }
+            return View(role);
+        }
+
+        public async Task<IActionResult> Delete(string id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+            if (ModelState.IsValid)
+            {
+                IdentityRole old = await roleManager.FindByNameAsync(id);
+                await roleManager.DeleteAsync(old);
+            }
             return RedirectToAction("Index");
         }
     }

@@ -39,9 +39,9 @@
             <td>
               
                 <a asp-action="AddUser" asp-route-id="@r.Name">Add user</a> |
-                @Html.ActionLink("Remove User", "RemoveUser", new { id = r.Name }) |
-                @Html.ActionLink("Edit", "Edit", new { id = r.Name }) |
-                @Html.ActionLink("Delete", "Delete", new { id = r.Name })
+                <a asp-action="RemoveUser" asp-route-id="@r.Name">Remove user</a> |
+                <a asp-action="Edit" asp-route-id="@r.Name">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@r.Name">Delete</a>
             </td>
         </tr>
     }   
