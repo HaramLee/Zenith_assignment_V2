@@ -123,7 +123,7 @@ namespace ZenithAssignment
             });
 
 
-            seedData.Initialize(context, roleManager, userManager);
+            seedData.Initialize(context,roleManager, userManager);
 
 
         }
