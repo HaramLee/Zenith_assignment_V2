@@ -8,7 +8,7 @@ using ZenithAssignment.Data;
 namespace ZenithAssignment.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161123065420_FirstMigration")]
+    [Migration("20161125063059_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -177,6 +177,8 @@ namespace ZenithAssignment.Migrations
 
                     b.Property<string>("UserName")
                         .HasAnnotation("MaxLength", 256);
+
+                    b.Property<string>("newRoleId");
 
                     b.HasKey("Id");
 

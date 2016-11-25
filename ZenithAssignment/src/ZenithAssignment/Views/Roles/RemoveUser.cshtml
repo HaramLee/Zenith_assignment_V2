@@ -1,0 +1,56 @@
+﻿@using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+@model ZenithAssignment.Models.ApplicationUser
+@inject UserManager<ApplicationUser> userManager
+@inject RoleManager<IdentityRole> roleManager
+@{
+    ViewBag.Title = "Remove a user from " + ViewBag.name;
+    string temp = ViewBag.name;
+    int c = 0;
+}
+
+<h2>@ViewBag.Title</h2>
+
+<form asp-controller="Roles" asp-action="RemoveUser" method="post" class="form-horizontal" role="form">
+    <div class="form-horizontal">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        @Html.Hidden("newRoleId", temp);
+        <div class="form-group">
+            <label asp-for="UserName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                @{
+                    var users = userManager.Users.ToList();
+                    <select asp-for="UserName" class="form-control", id="selectList">
+                        @foreach (var tmp in users)
+                        {
+                            @if (await userManager.IsInRoleAsync(tmp, temp))
+                            {
+                                @if (!(temp == "Admin" && tmp.UserName == "a"))
+                                {
+                                    c++;
+                                    <option value="@tmp.UserName">@tmp.UserName</option>
+                                }
+                                
+                            }
+                        }
+                    </select>}
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Remove" class="btn btn-default" id="submitButton"/>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    @Html.ActionLink("Back", "Index")
+</div>
+
+<script>
+    if(@c == 0){
+        document.getElementById("selectList").disabled = true;
+        document.getElementById("submitButton").disabled = true;
+    }
+</script>
