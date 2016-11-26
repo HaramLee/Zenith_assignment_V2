@@ -39,11 +39,33 @@ namespace ZenithAssignment.Controllers
         }
 
         // GET: api/account
-        [HttpGet]
+        [Authorize, HttpGet]
         public IEnumerable<ApplicationUser> Get()
         {
             return _userManager.Users.ToList();
         }
+
+        [Authorize]
+        [HttpGet("~/connect/roles")]
+        [Produces("application/json")]
+        public async Task<IActionResult> GetRoles()
+        {
+            var user = await _userManager.FindByNameAsync( HttpContext.User.Identity.Name);
+
+            if (!(_userManager.IsInRoleAsync(user,"Admin").Result && _userManager.IsInRoleAsync(user, "Member").Result))
+            {
+                return Ok(new JsonResult("false"){
+                    StatusCode = 200
+                });
+            } else
+            {
+                return Ok(new JsonResult("true")
+                {
+                    StatusCode = 200
+                });
+            }
+        }
+
 
 
         // POST api/account
