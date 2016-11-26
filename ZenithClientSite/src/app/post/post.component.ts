@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Post} from '../post';
-
+import {JwtHelper} from '../jwt-helper';
 import {PostService} from '../post.service';
 import {Login} from '../login';
 import {ZenithEvent} from '../zenith-event';
@@ -14,6 +14,7 @@ export class PostComponent implements OnInit {
   results: Array<Post>;
   userData : Login;
   eventData : Array<ZenithEvent>;
+  jwtHelper: JwtHelper = new JwtHelper();
 
   constructor(private postService: PostService) { }
 
@@ -24,13 +25,18 @@ export class PostComponent implements OnInit {
     );
     this.getLoginToken();
     //this.getEvents();
+    
+    //console.log(decoded);
   }
 
   getLoginToken():void{
     this.postService.userLogin("a", "P@$$w0rd")
     .then(userData => this.verifyLogin(userData))
     .catch(error => this.catchError(error));
+
+
   }
+
 
   verifyLogin(hello: any){
     this.userData = hello as Login;
@@ -45,6 +51,10 @@ export class PostComponent implements OnInit {
     this.postService.getEvents(this.userData.access_token)
     .then(eventData => this.promisedEvents(eventData))
     .catch(error => this.catchError(error));
+
+
+    var decoded = this.jwtHelper.decodeToken(this.userData.access_token);
+    console.log(decoded);
     /*this.eventData.forEach(e => {
       this.results.forEach(a => {
         if(a.activityId == e.ActivityId){

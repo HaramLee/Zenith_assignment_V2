@@ -48,7 +48,8 @@
       "version": "1.0.0-preview2-final",
       "type": "build"
     },
-    "Microsoft.Extensions.DependencyInjection.Abstractions": "1.1.0"
+    "Microsoft.Extensions.DependencyInjection.Abstractions": "1.1.0",
+    "Microsoft.AspNetCore.Authentication.JwtBearer": "1.1.0"
   },
 
   "tools": {

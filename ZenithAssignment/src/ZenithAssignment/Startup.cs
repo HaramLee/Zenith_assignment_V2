@@ -64,6 +64,8 @@ namespace ZenithAssignment
                 // Note: if you don't call this method, you won't be able to
                 // bind OpenIdConnectRequest or OpenIdConnectResponse parameters.
                 .AddMvcBinders()
+                
+                //.UseJsonWebTokens()
 
                 // Enable the authorization, logout, token and userinfo endpoints.
                 .EnableAuthorizationEndpoint("/connect/authorize")
@@ -109,11 +111,23 @@ namespace ZenithAssignment
 
 
             // Shows UseCors with CorsPolicyBuilder.
+          
             app.UseCors(builder =>
                 builder.WithOrigins("http://localhost:5000/")
                        .AllowAnyHeader()
                 );
-
+           
+            /*
+            // use jwt bearer authentication
+            app.UseJwtBearerAuthentication(new JwtBearerOptions
+            {
+                AutomaticAuthenticate = true,
+                AutomaticChallenge = true,
+                RequireHttpsMetadata = false,
+                Audience = "http://localhost:4200/",
+                Authority = "http://localhost:4200/"
+            });
+            */
 
             app.UseStaticFiles();
 

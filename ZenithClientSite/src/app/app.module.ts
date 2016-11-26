@@ -14,7 +14,7 @@ import { RegisterScreenComponent } from './register-screen/register-screen.compo
     AppComponent,
     PostComponent,
     LogingScreenComponent,
-    RegisterScreenComponent
+    RegisterScreenComponent,
   ],
   imports: [
     BrowserModule,

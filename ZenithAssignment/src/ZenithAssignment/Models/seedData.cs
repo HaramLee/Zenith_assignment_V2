@@ -214,8 +214,8 @@ namespace ZenithAssignment.Models
             {                
                 db.Events.Add(new Event
                 {
-                    FromDate = DateTime.ParseExact("10/18/2016 08:30", "MM/dd/yyyy HH:mm", null),                
-                    ToDate = DateTime.ParseExact("10/18/2016 10:30", "MM/dd/yyyy HH:mm", null),
+                    FromDate = DateTime.ParseExact("11/18/2016 08:30", "MM/dd/yyyy HH:mm", null),                
+                    ToDate = DateTime.ParseExact("11/18/2016 10:30", "MM/dd/yyyy HH:mm", null),
                     DateCreated = myDate1,
                     ApplicationUser = db.Users.First(b => b.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Senior’s Golf Tournament")
@@ -223,8 +223,8 @@ namespace ZenithAssignment.Models
 
                 db.Events.Add(new Event
                 {
-                    FromDate = DateTime.ParseExact("10/19/2016 08:30", "MM/dd/yyyy HH:mm", null),
-                    ToDate = DateTime.ParseExact("10/19/2016 10:30", "MM/dd/yyyy HH:mm", null),
+                    FromDate = DateTime.ParseExact("11/19/2016 08:30", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("11/19/2016 10:30", "MM/dd/yyyy HH:mm", null),
                     DateCreated = myDate2,
 
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
@@ -233,8 +233,8 @@ namespace ZenithAssignment.Models
 
                 db.Events.Add(new Event
                 {
-                    FromDate = DateTime.ParseExact("10/21/2016 17:30", "MM/dd/yyyy HH:mm", null),
-                    ToDate = DateTime.ParseExact("10/21/2016 19:15", "MM/dd/yyyy HH:mm", null),
+                    FromDate = DateTime.ParseExact("11/21/2016 17:30", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("11/21/2016 19:15", "MM/dd/yyyy HH:mm", null),
                     DateCreated = myDate3,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Youth Bowling Tournament")
@@ -242,8 +242,8 @@ namespace ZenithAssignment.Models
 
                 db.Events.Add(new Event
                 {
-                    FromDate = DateTime.ParseExact("10/21/2016 19:00", "MM/dd/yyyy HH:mm", null),
-                    ToDate = DateTime.ParseExact("10/21/2016 20:00", "MM/dd/yyyy HH:mm", null),
+                    FromDate = DateTime.ParseExact("11/21/2016 19:00", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("11/21/2016 20:00", "MM/dd/yyyy HH:mm", null),
                     DateCreated = myDate3,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Young ladies cooking lessons")
@@ -251,8 +251,8 @@ namespace ZenithAssignment.Models
 
                 db.Events.Add(new Event
                 {
-                    FromDate = DateTime.ParseExact("10/22/2016 08:30", "MM/dd/yyyy HH:mm", null),
-                    ToDate = DateTime.ParseExact("10/22/2016 10:30", "MM/dd/yyyy HH:mm", null),
+                    FromDate = DateTime.ParseExact("11/22/2016 08:30", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("11/22/2016 10:30", "MM/dd/yyyy HH:mm", null),
                     DateCreated = myDate3,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Youth craft lessons")
@@ -260,8 +260,8 @@ namespace ZenithAssignment.Models
 
                 db.Events.Add(new Event
                 {
-                    FromDate = DateTime.ParseExact("10/22/2016 10:30", "MM/dd/yyyy HH:mm", null),
-                    ToDate = DateTime.ParseExact("10/22/2016 12:00", "MM/dd/yyyy HH:mm", null),
+                    FromDate = DateTime.ParseExact("11/22/2016 10:30", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("11/22/2016 12:00", "MM/dd/yyyy HH:mm", null),
                     DateCreated = myDate3,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Youth choir practice")
@@ -269,8 +269,8 @@ namespace ZenithAssignment.Models
 
                 db.Events.Add(new Event
                 {
-                    FromDate = DateTime.ParseExact("10/22/2016 12:00", "MM/dd/yyyy HH:mm", null),
-                    ToDate = DateTime.ParseExact("10/22/2016 13:30", "MM/dd/yyyy HH:mm", null),
+                    FromDate = DateTime.ParseExact("11/22/2016 12:00", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("11/22/2016 13:30", "MM/dd/yyyy HH:mm", null),
                     DateCreated = myDate3,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Lunch")
@@ -278,8 +278,8 @@ namespace ZenithAssignment.Models
 
                 db.Events.Add(new Event
                 {
-                    FromDate = DateTime.ParseExact("10/23/2016 07:30", "MM/dd/yyyy HH:mm", null),
-                    ToDate = DateTime.ParseExact("10/23/2016 08:30", "MM/dd/yyyy HH:mm", null),
+                    FromDate = DateTime.ParseExact("11/23/2016 07:30", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("11/23/2016 08:30", "MM/dd/yyyy HH:mm", null),
                     DateCreated = myDate3,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Pancake Breakfast")
@@ -287,8 +287,8 @@ namespace ZenithAssignment.Models
 
                 db.Events.Add(new Event
                 {
-                    FromDate = DateTime.ParseExact("10/23/2016 08:30", "MM/dd/yyyy HH:mm", null),
-                    ToDate = DateTime.ParseExact("10/23/2016 10:30", "MM/dd/yyyy HH:mm", null),
+                    FromDate = DateTime.ParseExact("11/23/2016 08:30", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("11/23/2016 10:30", "MM/dd/yyyy HH:mm", null),
                     DateCreated = myDate3,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Swimming Lessons for the youth")
@@ -296,8 +296,8 @@ namespace ZenithAssignment.Models
 
                 db.Events.Add(new Event
                 {
-                    FromDate = DateTime.ParseExact("10/23/2016 08:30", "MM/dd/yyyy HH:mm", null),
-                    ToDate = DateTime.ParseExact("10/23/2016 10:30", "MM/dd/yyyy HH:mm", null),
+                    FromDate = DateTime.ParseExact("11/23/2016 08:30", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("11/23/2016 10:30", "MM/dd/yyyy HH:mm", null),
                     DateCreated = myDate3,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Swimming Exercise for parents")
@@ -305,8 +305,8 @@ namespace ZenithAssignment.Models
 
                 db.Events.Add(new Event
                 {
-                    FromDate = DateTime.ParseExact("10/23/2016 10:30", "MM/dd/yyyy HH:mm", null),
-                    ToDate = DateTime.ParseExact("10/23/2016 12:30", "MM/dd/yyyy HH:mm", null),
+                    FromDate = DateTime.ParseExact("11/23/2016 10:30", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("11/23/2016 12:30", "MM/dd/yyyy HH:mm", null),
                     DateCreated = myDate3,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Bingo Tournament")
@@ -314,8 +314,8 @@ namespace ZenithAssignment.Models
 
                 db.Events.Add(new Event
                 {
-                    FromDate = DateTime.ParseExact("10/23/2016 12:00", "MM/dd/yyyy HH:mm", null),
-                    ToDate = DateTime.ParseExact("10/23/2016 13:00", "MM/dd/yyyy HH:mm", null),
+                    FromDate = DateTime.ParseExact("11/23/2016 12:00", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("11/23/2016 13:00", "MM/dd/yyyy HH:mm", null),
                     DateCreated = myDate3,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "BBQ Lunch")
@@ -323,8 +323,8 @@ namespace ZenithAssignment.Models
 
                 db.Events.Add(new Event
                 {
-                    FromDate = DateTime.ParseExact("10/23/2016 13:00", "MM/dd/yyyy HH:mm", null),
-                    ToDate = DateTime.ParseExact("10/23/2016 18:00", "MM/dd/yyyy HH:mm", null),
+                    FromDate = DateTime.ParseExact("11/23/2016 13:00", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("11/23/2016 18:00", "MM/dd/yyyy HH:mm", null),
                     DateCreated = myDate3,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Garage Sale")
@@ -334,8 +334,8 @@ namespace ZenithAssignment.Models
 
                 db.Events.Add(new Event
                 {
-                    FromDate = DateTime.ParseExact("10/25/2016 08:30", "MM/dd/yyyy HH:mm", null),
-                    ToDate = DateTime.ParseExact("10/25/2016 10:30", "MM/dd/yyyy HH:mm", null),
+                    FromDate = DateTime.ParseExact("11/25/2016 08:30", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("11/25/2016 10:30", "MM/dd/yyyy HH:mm", null),
                     DateCreated = myDate1,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Senior’s Golf Tournament")
@@ -343,8 +343,8 @@ namespace ZenithAssignment.Models
 
                 db.Events.Add(new Event
                 {
-                    FromDate = DateTime.ParseExact("10/26/2016 08:30", "MM/dd/yyyy HH:mm", null),
-                    ToDate = DateTime.ParseExact("10/26/2016 10:30", "MM/dd/yyyy HH:mm", null),
+                    FromDate = DateTime.ParseExact("11/26/2016 08:30", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("11/26/2016 10:30", "MM/dd/yyyy HH:mm", null),
                     DateCreated = myDate2,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Leadership General Assembly Meeting")
@@ -352,8 +352,8 @@ namespace ZenithAssignment.Models
 
                 db.Events.Add(new Event
                 {
-                    FromDate = DateTime.ParseExact("10/28/2016 17:30", "MM/dd/yyyy HH:mm", null),
-                    ToDate = DateTime.ParseExact("10/28/2016 19:15", "MM/dd/yyyy HH:mm", null),
+                    FromDate = DateTime.ParseExact("11/28/2016 17:30", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("11/28/2016 19:15", "MM/dd/yyyy HH:mm", null),
                     DateCreated = myDate3,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Youth Bowling Tournament")
@@ -361,8 +361,8 @@ namespace ZenithAssignment.Models
 
                 db.Events.Add(new Event
                 {
-                    FromDate = DateTime.ParseExact("10/28/2016 19:00", "MM/dd/yyyy HH:mm", null),
-                    ToDate = DateTime.ParseExact("10/28/2016 20:00", "MM/dd/yyyy HH:mm", null),
+                    FromDate = DateTime.ParseExact("11/28/2016 19:00", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("11/28/2016 20:00", "MM/dd/yyyy HH:mm", null),
                     DateCreated = myDate3,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Young ladies cooking lessons")
@@ -370,8 +370,8 @@ namespace ZenithAssignment.Models
 
                 db.Events.Add(new Event
                 {
-                    FromDate = DateTime.ParseExact("10/29/2016 08:30", "MM/dd/yyyy HH:mm", null),
-                    ToDate = DateTime.ParseExact("10/29/2016 10:30", "MM/dd/yyyy HH:mm", null),
+                    FromDate = DateTime.ParseExact("11/29/2016 08:30", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("11/29/2016 10:30", "MM/dd/yyyy HH:mm", null),
                     DateCreated = myDate3,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Youth craft lessons")
@@ -379,8 +379,8 @@ namespace ZenithAssignment.Models
 
                 db.Events.Add(new Event
                 {
-                    FromDate = DateTime.ParseExact("10/29/2016 10:30", "MM/dd/yyyy HH:mm", null),
-                    ToDate = DateTime.ParseExact("10/29/2016 12:00", "MM/dd/yyyy HH:mm", null),
+                    FromDate = DateTime.ParseExact("11/29/2016 10:30", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("11/29/2016 12:00", "MM/dd/yyyy HH:mm", null),
                     DateCreated = myDate3,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Youth choir practice")
@@ -388,8 +388,8 @@ namespace ZenithAssignment.Models
 
                 db.Events.Add(new Event
                 {
-                    FromDate = DateTime.ParseExact("10/29/2016 12:00", "MM/dd/yyyy HH:mm", null),
-                    ToDate = DateTime.ParseExact("10/29/2016 13:30", "MM/dd/yyyy HH:mm", null),
+                    FromDate = DateTime.ParseExact("11/29/2016 12:00", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("11/29/2016 13:30", "MM/dd/yyyy HH:mm", null),
                     DateCreated = myDate3,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Lunch")
@@ -397,8 +397,8 @@ namespace ZenithAssignment.Models
 
                 db.Events.Add(new Event
                 {
-                    FromDate = DateTime.ParseExact("10/30/2016 07:30", "MM/dd/yyyy HH:mm", null),
-                    ToDate = DateTime.ParseExact("10/30/2016 08:30", "MM/dd/yyyy HH:mm", null),
+                    FromDate = DateTime.ParseExact("11/30/2016 07:30", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("11/30/2016 08:30", "MM/dd/yyyy HH:mm", null),
                     DateCreated = myDate3,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Pancake Breakfast")
@@ -406,8 +406,8 @@ namespace ZenithAssignment.Models
 
                 db.Events.Add(new Event
                 {
-                    FromDate = DateTime.ParseExact("10/30/2016 08:30", "MM/dd/yyyy HH:mm", null),
-                    ToDate = DateTime.ParseExact("10/30/2016 10:30", "MM/dd/yyyy HH:mm", null),
+                    FromDate = DateTime.ParseExact("11/30/2016 08:30", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("11/30/2016 10:30", "MM/dd/yyyy HH:mm", null),
                     DateCreated = myDate3,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Swimming Lessons for the youth")
@@ -415,8 +415,8 @@ namespace ZenithAssignment.Models
 
                 db.Events.Add(new Event
                 {
-                    FromDate = DateTime.ParseExact("10/30/2016 08:30", "MM/dd/yyyy HH:mm", null),
-                    ToDate = DateTime.ParseExact("10/30/2016 10:30", "MM/dd/yyyy HH:mm", null),
+                    FromDate = DateTime.ParseExact("11/30/2016 08:30", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("11/30/2016 10:30", "MM/dd/yyyy HH:mm", null),
                     DateCreated = myDate3,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Swimming Exercise for parents")
@@ -424,8 +424,8 @@ namespace ZenithAssignment.Models
 
                 db.Events.Add(new Event
                 {
-                    FromDate = DateTime.ParseExact("10/30/2016 10:30", "MM/dd/yyyy HH:mm", null),
-                    ToDate = DateTime.ParseExact("10/30/2016 12:30", "MM/dd/yyyy HH:mm", null),
+                    FromDate = DateTime.ParseExact("11/30/2016 10:30", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("11/30/2016 12:30", "MM/dd/yyyy HH:mm", null),
                     DateCreated = myDate3,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Bingo Tournament")
@@ -433,8 +433,8 @@ namespace ZenithAssignment.Models
 
                 db.Events.Add(new Event
                 {
-                    FromDate = DateTime.ParseExact("10/30/2016 12:00", "MM/dd/yyyy HH:mm", null),
-                    ToDate = DateTime.ParseExact("10/30/2016 13:00", "MM/dd/yyyy HH:mm", null),
+                    FromDate = DateTime.ParseExact("11/30/2016 12:00", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("11/30/2016 13:00", "MM/dd/yyyy HH:mm", null),
                     DateCreated = myDate3,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "BBQ Lunch")
@@ -442,12 +442,103 @@ namespace ZenithAssignment.Models
 
                 db.Events.Add(new Event
                 {
-                    FromDate = DateTime.ParseExact("10/30/2016 13:00", "MM/dd/yyyy HH:mm", null),
-                    ToDate = DateTime.ParseExact("10/30/2016 18:00", "MM/dd/yyyy HH:mm", null),
+                    FromDate = DateTime.ParseExact("11/30/2016 13:00", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("11/30/2016 18:00", "MM/dd/yyyy HH:mm", null),
                     DateCreated = myDate3,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Garage Sale")
                 });
+
+                db.Events.Add(new Event
+                {
+                    FromDate = DateTime.ParseExact("12/1/2016 08:30", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("12/1/2016 10:30", "MM/dd/yyyy HH:mm", null),
+                    DateCreated = myDate3,
+                    ApplicationUser = db.Users.First(a => a.UserName == "a"),
+                    Activity = db.Activities.First(t => t.ActivityDec == "Swimming Exercise for parents")
+                });
+
+                db.Events.Add(new Event
+                {
+                    FromDate = DateTime.ParseExact("12/1/2016 10:30", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("12/1/2016 12:30", "MM/dd/yyyy HH:mm", null),
+                    DateCreated = myDate3,
+                    ApplicationUser = db.Users.First(a => a.UserName == "a"),
+                    Activity = db.Activities.First(t => t.ActivityDec == "Bingo Tournament")
+                });
+
+                db.Events.Add(new Event
+                {
+                    FromDate = DateTime.ParseExact("12/1/2016 12:00", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("12/1/2016 13:00", "MM/dd/yyyy HH:mm", null),
+                    DateCreated = myDate3,
+                    ApplicationUser = db.Users.First(a => a.UserName == "a"),
+                    Activity = db.Activities.First(t => t.ActivityDec == "BBQ Lunch")
+                });
+
+                db.Events.Add(new Event
+                {
+                    FromDate = DateTime.ParseExact("12/1/2016 13:00", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("12/1/2016 18:00", "MM/dd/yyyy HH:mm", null),
+                    DateCreated = myDate3,
+                    ApplicationUser = db.Users.First(a => a.UserName == "a"),
+                    Activity = db.Activities.First(t => t.ActivityDec == "Garage Sale")
+                });
+
+                db.Events.Add(new Event
+                {
+                    FromDate = DateTime.ParseExact("12/2/2016 08:30", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("12/2/2016 10:30", "MM/dd/yyyy HH:mm", null),
+                    DateCreated = myDate2,
+                    ApplicationUser = db.Users.First(a => a.UserName == "a"),
+                    Activity = db.Activities.First(t => t.ActivityDec == "Leadership General Assembly Meeting")
+                });
+
+                db.Events.Add(new Event
+                {
+                    FromDate = DateTime.ParseExact("12/2/2016 17:30", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("12/2/2016 19:15", "MM/dd/yyyy HH:mm", null),
+                    DateCreated = myDate3,
+                    ApplicationUser = db.Users.First(a => a.UserName == "a"),
+                    Activity = db.Activities.First(t => t.ActivityDec == "Youth Bowling Tournament")
+                });
+
+                db.Events.Add(new Event
+                {
+                    FromDate = DateTime.ParseExact("12/2/2016 19:00", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("12/3/2016 20:00", "MM/dd/yyyy HH:mm", null),
+                    DateCreated = myDate3,
+                    ApplicationUser = db.Users.First(a => a.UserName == "a"),
+                    Activity = db.Activities.First(t => t.ActivityDec == "Young ladies cooking lessons")
+                });
+
+                db.Events.Add(new Event
+                {
+                    FromDate = DateTime.ParseExact("12/3/2016 08:30", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("12/3/2016 10:30", "MM/dd/yyyy HH:mm", null),
+                    DateCreated = myDate3,
+                    ApplicationUser = db.Users.First(a => a.UserName == "a"),
+                    Activity = db.Activities.First(t => t.ActivityDec == "Youth craft lessons")
+                });
+
+                db.Events.Add(new Event
+                {
+                    FromDate = DateTime.ParseExact("12/3/2016 10:30", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("12/3/2016 12:00", "MM/dd/yyyy HH:mm", null),
+                    DateCreated = myDate3,
+                    ApplicationUser = db.Users.First(a => a.UserName == "a"),
+                    Activity = db.Activities.First(t => t.ActivityDec == "Youth choir practice")
+                });
+
+                db.Events.Add(new Event
+                {
+                    FromDate = DateTime.ParseExact("12/3/2016 12:00", "MM/dd/yyyy HH:mm", null),
+                    ToDate = DateTime.ParseExact("12/3/2016 13:30", "MM/dd/yyyy HH:mm", null),
+                    DateCreated = myDate3,
+                    ApplicationUser = db.Users.First(a => a.UserName == "a"),
+                    Activity = db.Activities.First(t => t.ActivityDec == "Lunch")
+                });
+
             }
         }
 

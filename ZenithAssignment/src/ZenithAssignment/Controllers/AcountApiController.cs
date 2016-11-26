@@ -163,40 +163,12 @@ namespace ZenithAssignment.Controllers
         [HttpPost("~/connect/token"), Produces("application/json")]
         public async Task<IActionResult> Exchange(OpenIdConnectRequest request)
         {
+            
+
             if (request.IsPasswordGrantType())
             {
                 var user = await _userManager.FindByNameAsync(request.Username);
                 if (user == null)
-                {
-                    return BadRequest(new OpenIdConnectResponse
-                    {
-                        Error = OpenIdConnectConstants.Errors.InvalidGrant,
-                        ErrorDescription = "The username/password couple is invalid."
-                    });
-                }
-
-                // Ensure the user is allowed to sign in.
-                if (!await _signInManager.CanSignInAsync(user))
-                {
-                    return BadRequest(new OpenIdConnectResponse
-                    {
-                        Error = OpenIdConnectConstants.Errors.InvalidGrant,
-                        ErrorDescription = "The specified user is not allowed to sign in."
-                    });
-                }
-
-                // Reject the token request if two-factor authentication has been enabled by the user.
-                if (_userManager.SupportsUserTwoFactor && await _userManager.GetTwoFactorEnabledAsync(user))
-                {
-                    return BadRequest(new OpenIdConnectResponse
-                    {
-                        Error = OpenIdConnectConstants.Errors.InvalidGrant,
-                        ErrorDescription = "The specified user is not allowed to sign in."
-                    });
-                }
-
-                // Ensure the user is not already locked out.
-                if (_userManager.SupportsUserLockout && await _userManager.IsLockedOutAsync(user))
                 {
                     return BadRequest(new OpenIdConnectResponse
                     {
@@ -225,8 +197,12 @@ namespace ZenithAssignment.Controllers
                     await _userManager.ResetAccessFailedCountAsync(user);
                 }
 
+
                 // Create a new authentication ticket.
                 var ticket = await CreateTicketAsync(request, user);
+
+                ticket.SetResources(request.GetResources());
+                ticket.SetScopes(request.GetScopes());
 
                 return SignIn(ticket.Principal, ticket.Properties, ticket.AuthenticationScheme);
             }
@@ -237,6 +213,7 @@ namespace ZenithAssignment.Controllers
                 ErrorDescription = "The specified grant type is not supported."
             });
         }
+    
 
         private async Task<AuthenticationTicket> CreateTicketAsync(OpenIdConnectRequest request, ApplicationUser user)
         {
