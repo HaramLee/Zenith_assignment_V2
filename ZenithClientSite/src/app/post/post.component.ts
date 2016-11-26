@@ -27,7 +27,7 @@ export class PostComponent implements OnInit {
   }
 
   getLoginToken():void{
-    this.postService.userLogin()
+    this.postService.userLogin("a", "P@$$w0rd")
     .then(userData => this.verifyLogin(userData))
     .catch(error => this.catchError(error));
   }

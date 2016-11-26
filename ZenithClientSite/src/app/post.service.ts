@@ -22,10 +22,10 @@ export class PostService {
     .map((res: Response) => res.json());
   }
 
-  userLogin(): Promise<Login>{
+  userLogin(username : string, password: string): Promise<Login>{
     var Loginheaders = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
     var url = `${this.BASE_URL}/connect/token`;
-    var body = 'username=a&password=P@$$w0rd&grant_type=password' 
+    var body = `username=${username}&password=${password}&grant_type=password`;
     //'username': 'a', 'password': 'P@$$w0rd', 'grant_type': 'password', 
     return this.http.post(url, body,{headers: Loginheaders})
     .toPromise()

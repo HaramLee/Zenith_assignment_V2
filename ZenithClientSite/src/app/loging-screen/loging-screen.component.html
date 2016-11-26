@@ -2,22 +2,17 @@
  <!-- *ngIf="userData" taken out -->
 <div class="col-md-6 col-md-offset-3"  >
     <h2>Login</h2>
-    <form name="form" (ngSubmit)="f.form.valid && login()" novalidate>
         <div class="form-group" >
             <label for="username">Username</label>
-            <input type="text" class="form-control" name="username" [(ngModel)]="userData.username" #username="ngModel"  />
+            <input type="text" class="form-control" name="username" [(ngModel)]="user.username"   />
         
         </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
             <label for="password">Password</label>
-            <input type="password" class="form-control" name="password" [(ngModel)]="userData.password" #password="ngModel"  />
+            <input type="password" class="form-control" name="password" [(ngModel)]="user.password"   />
        
-        </div>
         <div class="form-group">
-            <button [disabled]="loading" class="btn btn-primary">Login</button>
-            <a routerLink="/register">Register</a>
+            <button (click)="add(user)" class="btn btn-primary">Login</button>
         </div>
-    </form>
     
 </div>
 
