@@ -1,7 +1,7 @@
 export class Post {
   activityId: number;
   activityDec: string;
-  dateCreated: dateTime;
+  dateCreated: string;
 
   constructor(obj?: any) {
     this.activityId = obj && obj.activityId || null;
