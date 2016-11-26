@@ -21,7 +21,7 @@ using System.Security.Claims;
 
 namespace ZenithAssignment.Controllers
 {
-    
+    [Route("api/account")]
     public class AcountApiController : Controller
     {
         private readonly OpenIddictApplicationManager<OpenIddictApplication> _applicationManager;
@@ -37,6 +37,40 @@ namespace ZenithAssignment.Controllers
             _signInManager = signInManager;
             _userManager = userManager;
         }
+
+        // GET: api/account
+        [HttpGet]
+        public IEnumerable<ApplicationUser> Get()
+        {
+            return _userManager.Users.ToList();
+        }
+
+
+        // POST api/account
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> Register([FromBody]ApplicationUser model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
+
+            IdentityResult result = await _userManager.CreateAsync(user, model.PasswordHash);
+
+            //give new user a member role
+            await _userManager.AddToRoleAsync(await _userManager.FindByEmailAsync(user.Email), "Member");
+
+            if (!result.Succeeded)
+            {
+                return BadRequest(ModelState);
+            }
+
+            return Ok();
+        }
+
 
         // Note: to support interactive flows like the code flow,
         // you must provide your own authorization endpoint action:

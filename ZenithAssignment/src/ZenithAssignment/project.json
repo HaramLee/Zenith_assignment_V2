@@ -1,4 +1,4 @@
-﻿{
+{
   "userSecretsId": "aspnet-ZenithAssignment-904d939f-6cb1-45f3-afbf-ca3f1a5a89cd",
 
   "dependencies": {
@@ -47,7 +47,8 @@
     "Microsoft.VisualStudio.Web.CodeGenerators.Mvc": {
       "version": "1.0.0-preview2-final",
       "type": "build"
-    }
+    },
+    "Microsoft.Extensions.DependencyInjection.Abstractions": "1.1.0"
   },
 
   "tools": {
