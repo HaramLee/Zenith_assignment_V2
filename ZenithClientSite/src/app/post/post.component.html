@@ -1,4 +1,4 @@
-<table *ngIf="results" border="1">
+<table *ngIf="results" border="1" class="table table-inverse">
   <thead>
     <tr>
       <th>Activity ID</th>
@@ -21,8 +21,8 @@
 {{userData.access_token}}
 </p>
 
-<table *ngIf="eventData" border ="1">
-  <thead>
+<table *ngIf="eventData" border ="1" class="table table-striped">
+  <thead class="thead-inverse">
     <tr>
       <th>From</th>
       <th>To</th>
