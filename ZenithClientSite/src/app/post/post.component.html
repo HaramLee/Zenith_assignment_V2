@@ -20,3 +20,18 @@
 <p *ngIf="userData">
 {{userData.access_token}}
 </p>
+
+<table *ngIf="eventData" border ="1">
+  <thead>
+    <tr>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let e of eventData; let j=index">
+      <td>{{e.fromDate}}</td>
+      <td>{{e.toDate}}</td>
+    </tr>
+  </tbody>
+</table>

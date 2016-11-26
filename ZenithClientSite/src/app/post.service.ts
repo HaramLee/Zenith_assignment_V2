@@ -1,4 +1,5 @@
 import {Login} from './login';
+import {ZenithEvent} from './zenith-event';
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -29,6 +30,15 @@ export class PostService {
     return this.http.post(url, body,{headers: Loginheaders})
     .toPromise()
     .then(result => result.json() as Login)
+    .catch(this.handleError);
+  }
+
+  getEvents(token: string): Promise<ZenithEvent[]>{
+    var eventHeaders = new Headers({'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': `Bearer ${token}`});
+    var url = `${this.BASE_URL}/api/event`;
+    return this.http.get(url, {headers : eventHeaders})
+    .toPromise()
+    .then(response =>response.json() as ZenithEvent[])
     .catch(this.handleError);
   }
 }

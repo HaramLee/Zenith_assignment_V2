@@ -1,6 +1,6 @@
 export class Login {
-    token_type : String;
-    access_token : String;
+    token_type : string;
+    access_token : string;
 
     constructor(obj?: any){
         this.token_type = obj && obj.token_type || null;
