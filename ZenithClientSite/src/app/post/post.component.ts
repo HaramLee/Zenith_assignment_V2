@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Post} from '../post';
 import {PostService} from '../post.service';
+import {Login} from '../login';
 
 @Component({
   selector: 'app-post',
@@ -9,6 +10,7 @@ import {PostService} from '../post.service';
 })
 export class PostComponent implements OnInit {
   results: Array<Post>;
+  userData : Login;
 
   constructor(private postService: PostService) { }
 
@@ -17,5 +19,11 @@ export class PostComponent implements OnInit {
       data => { this.results = data; },
       error => console.log(error)
     );
+    this.getLoginToken();
+  }
+
+  getLoginToken():void{
+    this.postService.userLogin()
+    .then(userData => this.userData = userData);
   }
 }
