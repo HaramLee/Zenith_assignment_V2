@@ -2,11 +2,11 @@ export class ZenithEvent {
     EventId : number;
     ActivityId : number;
     DateCreated : string;
-    FromDate : string;
+    FromDate : Date;
     Id : string;
     IsActive : number;
-    ToDate : string;
-    //ActivityName : string;
+    ToDate : Date;
+    ActivityName : string;
 
     constructor(obj?: any){
         this.EventId = obj && obj.eventId || null;
@@ -16,6 +16,5 @@ export class ZenithEvent {
         this.Id = obj && obj.id || null;
         this.IsActive = obj && obj.isActive || null;
         this.ToDate = obj && obj.toDate || null;
-       // this.ActivityName = "";
     }
 }
