@@ -114,7 +114,7 @@ namespace ZenithAssignment
             // Shows UseCors with CorsPolicyBuilder.
           
             app.UseCors(builder =>
-                builder.WithOrigins("http://localhost:5000/")
+                builder.WithOrigins("http://zenithassignmentv2.azurewebsites.net/")
                        .AllowAnyHeader()
                 );
 
@@ -134,7 +134,7 @@ namespace ZenithAssignment
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-
+            context.Database.Migrate();
             seedData.Initialize(context,roleManager, userManager);
 
 

@@ -23,10 +23,6 @@ namespace ZenithAssignment.Migrations
 
         private static async void getUsers(ApplicationDbContext context, RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager)
         {
-            //var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-            //var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
-            //var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-
 
             if (!await roleManager.RoleExistsAsync("Admin"))
                 await roleManager.CreateAsync(new IdentityRole("Admin"));
@@ -89,20 +85,9 @@ namespace ZenithAssignment.Migrations
                 }
             }
 
-            //context.context.Activities.Add(t => t.ActivityId, getActivities().ToArray());
-
             getActivities(context);
-       
-     
-           
-
-            //context.Add(t => t.ActivityId, getActivities(context).ToArray());
 
             context.SaveChanges();
-
-
-
-            //context.db.Events.Add(p => p.EventId, getEvents(context).ToArray());
 
             getEvents(context);
 
@@ -226,7 +211,7 @@ namespace ZenithAssignment.Migrations
                 {
                     FromDate = DateTime.ParseExact("11/19/2016 08:30", "MM/dd/yyyy HH:mm", null),
                     ToDate = DateTime.ParseExact("11/19/2016 10:30", "MM/dd/yyyy HH:mm", null),
-                    DateCreated = myDate2,
+                    DateCreated = myDate1,
 
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Leadership General Assembly Meeting")
@@ -236,7 +221,7 @@ namespace ZenithAssignment.Migrations
                 {
                     FromDate = DateTime.ParseExact("11/21/2016 17:30", "MM/dd/yyyy HH:mm", null),
                     ToDate = DateTime.ParseExact("11/21/2016 19:15", "MM/dd/yyyy HH:mm", null),
-                    DateCreated = myDate3,
+                    DateCreated = myDate1,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Youth Bowling Tournament")
                 });
@@ -245,7 +230,7 @@ namespace ZenithAssignment.Migrations
                 {
                     FromDate = DateTime.ParseExact("11/21/2016 19:00", "MM/dd/yyyy HH:mm", null),
                     ToDate = DateTime.ParseExact("11/21/2016 20:00", "MM/dd/yyyy HH:mm", null),
-                    DateCreated = myDate3,
+                    DateCreated = myDate1,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Young ladies cooking lessons")
                 });
@@ -254,7 +239,7 @@ namespace ZenithAssignment.Migrations
                 {
                     FromDate = DateTime.ParseExact("11/22/2016 08:30", "MM/dd/yyyy HH:mm", null),
                     ToDate = DateTime.ParseExact("11/22/2016 10:30", "MM/dd/yyyy HH:mm", null),
-                    DateCreated = myDate3,
+                    DateCreated = myDate1,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Youth craft lessons")
                 });
@@ -263,7 +248,7 @@ namespace ZenithAssignment.Migrations
                 {
                     FromDate = DateTime.ParseExact("11/22/2016 10:30", "MM/dd/yyyy HH:mm", null),
                     ToDate = DateTime.ParseExact("11/22/2016 12:00", "MM/dd/yyyy HH:mm", null),
-                    DateCreated = myDate3,
+                    DateCreated = myDate1,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Youth choir practice")
                 });
@@ -272,7 +257,7 @@ namespace ZenithAssignment.Migrations
                 {
                     FromDate = DateTime.ParseExact("11/22/2016 12:00", "MM/dd/yyyy HH:mm", null),
                     ToDate = DateTime.ParseExact("11/22/2016 13:30", "MM/dd/yyyy HH:mm", null),
-                    DateCreated = myDate3,
+                    DateCreated = myDate1,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Lunch")
                 });
@@ -281,7 +266,7 @@ namespace ZenithAssignment.Migrations
                 {
                     FromDate = DateTime.ParseExact("11/23/2016 07:30", "MM/dd/yyyy HH:mm", null),
                     ToDate = DateTime.ParseExact("11/23/2016 08:30", "MM/dd/yyyy HH:mm", null),
-                    DateCreated = myDate3,
+                    DateCreated = myDate1,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Pancake Breakfast")
                 });
@@ -290,7 +275,7 @@ namespace ZenithAssignment.Migrations
                 {
                     FromDate = DateTime.ParseExact("11/23/2016 08:30", "MM/dd/yyyy HH:mm", null),
                     ToDate = DateTime.ParseExact("11/23/2016 10:30", "MM/dd/yyyy HH:mm", null),
-                    DateCreated = myDate3,
+                    DateCreated = myDate1,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Swimming Lessons for the youth")
                 });
@@ -299,7 +284,7 @@ namespace ZenithAssignment.Migrations
                 {
                     FromDate = DateTime.ParseExact("11/23/2016 08:30", "MM/dd/yyyy HH:mm", null),
                     ToDate = DateTime.ParseExact("11/23/2016 10:30", "MM/dd/yyyy HH:mm", null),
-                    DateCreated = myDate3,
+                    DateCreated = myDate1,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Swimming Exercise for parents")
                 });
@@ -308,7 +293,7 @@ namespace ZenithAssignment.Migrations
                 {
                     FromDate = DateTime.ParseExact("11/23/2016 10:30", "MM/dd/yyyy HH:mm", null),
                     ToDate = DateTime.ParseExact("11/23/2016 12:30", "MM/dd/yyyy HH:mm", null),
-                    DateCreated = myDate3,
+                    DateCreated = myDate1,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Bingo Tournament")
                 });
@@ -317,7 +302,7 @@ namespace ZenithAssignment.Migrations
                 {
                     FromDate = DateTime.ParseExact("11/23/2016 12:00", "MM/dd/yyyy HH:mm", null),
                     ToDate = DateTime.ParseExact("11/23/2016 13:00", "MM/dd/yyyy HH:mm", null),
-                    DateCreated = myDate3,
+                    DateCreated = myDate1,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "BBQ Lunch")
                 });
@@ -326,7 +311,7 @@ namespace ZenithAssignment.Migrations
                 {
                     FromDate = DateTime.ParseExact("11/23/2016 13:00", "MM/dd/yyyy HH:mm", null),
                     ToDate = DateTime.ParseExact("11/23/2016 18:00", "MM/dd/yyyy HH:mm", null),
-                    DateCreated = myDate3,
+                    DateCreated = myDate1,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Garage Sale")
                 });
@@ -337,7 +322,7 @@ namespace ZenithAssignment.Migrations
                 {
                     FromDate = DateTime.ParseExact("11/25/2016 08:30", "MM/dd/yyyy HH:mm", null),
                     ToDate = DateTime.ParseExact("11/25/2016 10:30", "MM/dd/yyyy HH:mm", null),
-                    DateCreated = myDate1,
+                    DateCreated = myDate2,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Senior’s Golf Tournament")
                 });
@@ -355,7 +340,7 @@ namespace ZenithAssignment.Migrations
                 {
                     FromDate = DateTime.ParseExact("11/28/2016 17:30", "MM/dd/yyyy HH:mm", null),
                     ToDate = DateTime.ParseExact("11/28/2016 19:15", "MM/dd/yyyy HH:mm", null),
-                    DateCreated = myDate3,
+                    DateCreated = myDate2,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Youth Bowling Tournament")
                 });
@@ -364,7 +349,7 @@ namespace ZenithAssignment.Migrations
                 {
                     FromDate = DateTime.ParseExact("11/28/2016 19:00", "MM/dd/yyyy HH:mm", null),
                     ToDate = DateTime.ParseExact("11/28/2016 20:00", "MM/dd/yyyy HH:mm", null),
-                    DateCreated = myDate3,
+                    DateCreated = myDate2,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Young ladies cooking lessons")
                 });
@@ -373,7 +358,7 @@ namespace ZenithAssignment.Migrations
                 {
                     FromDate = DateTime.ParseExact("11/29/2016 08:30", "MM/dd/yyyy HH:mm", null),
                     ToDate = DateTime.ParseExact("11/29/2016 10:30", "MM/dd/yyyy HH:mm", null),
-                    DateCreated = myDate3,
+                    DateCreated = myDate2,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Youth craft lessons")
                 });
@@ -382,7 +367,7 @@ namespace ZenithAssignment.Migrations
                 {
                     FromDate = DateTime.ParseExact("11/29/2016 10:30", "MM/dd/yyyy HH:mm", null),
                     ToDate = DateTime.ParseExact("11/29/2016 12:00", "MM/dd/yyyy HH:mm", null),
-                    DateCreated = myDate3,
+                    DateCreated = myDate2,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Youth choir practice")
                 });
@@ -391,7 +376,7 @@ namespace ZenithAssignment.Migrations
                 {
                     FromDate = DateTime.ParseExact("11/29/2016 12:00", "MM/dd/yyyy HH:mm", null),
                     ToDate = DateTime.ParseExact("11/29/2016 13:30", "MM/dd/yyyy HH:mm", null),
-                    DateCreated = myDate3,
+                    DateCreated = myDate2,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Lunch")
                 });
@@ -490,7 +475,7 @@ namespace ZenithAssignment.Migrations
                 {
                     FromDate = DateTime.ParseExact("12/02/2016 08:30", "MM/dd/yyyy HH:mm", null),
                     ToDate = DateTime.ParseExact("12/02/2016 10:30", "MM/dd/yyyy HH:mm", null),
-                    DateCreated = myDate2,
+                    DateCreated = myDate3,
                     ApplicationUser = db.Users.First(a => a.UserName == "a"),
                     Activity = db.Activities.First(t => t.ActivityDec == "Leadership General Assembly Meeting")
                 });
