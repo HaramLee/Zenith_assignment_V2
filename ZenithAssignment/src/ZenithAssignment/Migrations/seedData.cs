@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ZenithAssignment.Data;
+using ZenithAssignment.Models;
 
-namespace ZenithAssignment.Models
+namespace ZenithAssignment.Migrations
 {
     public class seedData
     {

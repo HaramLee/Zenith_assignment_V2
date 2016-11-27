@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ZenithAssignment.Controllers
 {
-    
+    [Authorize]
     [Route("api/event")]
     public class EventApiController : Controller
     {
@@ -24,7 +24,6 @@ namespace ZenithAssignment.Controllers
 
         // GET: api/Event
         [HttpGet]
-        [Authorize(Roles = "Admin")]
         public IEnumerable<Event> Get()
         {
             return _context.Events.ToList();

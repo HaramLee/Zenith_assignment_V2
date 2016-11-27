@@ -15,6 +15,7 @@ using ZenithAssignment.Services;
 using Microsoft.AspNetCore.Identity;
 using OpenIddict;
 using CryptoHelper;
+using ZenithAssignment.Migrations;
 
 namespace ZenithAssignment
 {
@@ -45,9 +46,6 @@ namespace ZenithAssignment
             // Add framework services.
             services.AddCors();
 
-            //services.AddDbContext<ApplicationDbContext>(options =>
-            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
@@ -64,8 +62,6 @@ namespace ZenithAssignment
                 // Note: if you don't call this method, you won't be able to
                 // bind OpenIdConnectRequest or OpenIdConnectResponse parameters.
                 .AddMvcBinders()
-                
-                //.UseJsonWebTokens()
 
                 // Enable the authorization, logout, token and userinfo endpoints.
                 .EnableAuthorizationEndpoint("/connect/authorize")
@@ -109,31 +105,15 @@ namespace ZenithAssignment
                 app.UseExceptionHandler("/Home/Error");
             }
 
-
-            // Shows UseCors with CorsPolicyBuilder.
-          
             app.UseCors(builder =>
                 builder.WithOrigins("http://localhost:5000/")
                        .AllowAnyHeader()
                 );
-           
-            /*
-            // use jwt bearer authentication
-            app.UseJwtBearerAuthentication(new JwtBearerOptions
-            {
-                AutomaticAuthenticate = true,
-                AutomaticChallenge = true,
-                RequireHttpsMetadata = false,
-                Audience = "http://localhost:4200/",
-                Authority = "http://localhost:4200/"
-            });
-            */
 
             app.UseStaticFiles();
 
             app.UseIdentity();
 
-            // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
             app.UseOAuthValidation();
 
             app.UseOpenIddict();
