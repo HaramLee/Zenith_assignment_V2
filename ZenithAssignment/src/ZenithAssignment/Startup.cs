@@ -46,6 +46,9 @@ namespace ZenithAssignment
             // Add framework services.
             services.AddCors();
 
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
@@ -62,6 +65,8 @@ namespace ZenithAssignment
                 // Note: if you don't call this method, you won't be able to
                 // bind OpenIdConnectRequest or OpenIdConnectResponse parameters.
                 .AddMvcBinders()
+                
+                //.UseJsonWebTokens()
 
                 // Enable the authorization, logout, token and userinfo endpoints.
                 .EnableAuthorizationEndpoint("/connect/authorize")
@@ -105,6 +110,9 @@ namespace ZenithAssignment
                 app.UseExceptionHandler("/Home/Error");
             }
 
+
+            // Shows UseCors with CorsPolicyBuilder.
+          
             app.UseCors(builder =>
                 builder.WithOrigins("http://localhost:5000/")
                        .AllowAnyHeader()
@@ -114,6 +122,7 @@ namespace ZenithAssignment
 
             app.UseIdentity();
 
+            // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
             app.UseOAuthValidation();
 
             app.UseOpenIddict();
