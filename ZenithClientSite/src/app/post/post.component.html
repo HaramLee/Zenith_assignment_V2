@@ -1,37 +1,14 @@
-<table *ngIf="results" border="1" class="table table-inverse">
-  <thead>
+<div class ="container" style ="widh:50%; padding-top 30px;">
+  <table class="table" *ngFor='let key of keys'>
     <tr>
-      <th>Activity ID</th>
-      <th>Description</th>
-      <th>Date Created</th>
-
+      <th colspan="2" style="text-align:center">{{eventMap.get(key)[0].fromDate.toDateString()}}</th>
     </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let p of results; let i=index">
-      <td>{{p.activityId}}</td>
-      <td>{{p.activityDec}}</td>
-      <td>{{p.dateCreated}}</td>
+    <table class="table" *ngFor='let event of eventMap.get(key)'>
+      <tr>
+        <td width="50%"> {{event.fromDate.toLocaleTimeString() + " - " + event.toDate.toLocaleTimeString()}} </td>
+        <td>{{event.ActivityName}}</td>
+      </tr>
+    </table>
 
-    </tr>
-  </tbody>
-</table>
-
-<p *ngIf="userData">
-{{userData.access_token}}
-</p>
-
-<table *ngIf="eventData" border ="1" class="table table-striped">
-  <thead class="thead-inverse">
-    <tr>
-      <th>From</th>
-      <th>To</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let e of eventData; let j=index">
-      <td>{{e.fromDate}}</td>
-      <td>{{e.toDate}}</td>
-    </tr>
-  </tbody>
-</table>
+  </table>
+</div>

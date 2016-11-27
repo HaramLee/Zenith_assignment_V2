@@ -16,17 +16,26 @@ export class PostComponent implements OnInit {
   eventData : Array<ZenithEvent>;
   jwtHelper: JwtHelper = new JwtHelper();
 
+  eventMap = new Map<string, Array<ZenithEvent>>();
+  keys = new Array<string>();
+  mondayDate : Date;
+  sundayDate : Date;
+
   constructor(private postService: PostService) { }
 
   ngOnInit() {
     this.postService.getAll().subscribe(
-      data => { this.results = data; },
+      data => this.getResults(data),
       error => console.log(error)
     );
+    //this.getLoginToken();
+    this.mondayDate = this.getMonday(new Date());
+    this.sundayDate = this.getSunday();
+  }
+
+  getResults(tmp : any){
+    this.results = tmp as Array<Post>;
     this.getLoginToken();
-    //this.getEvents();
-    
-    //console.log(decoded);
   }
 
   getLoginToken():void{
@@ -50,21 +59,64 @@ export class PostComponent implements OnInit {
   getEvents():void{
     this.postService.getEvents(this.userData.access_token)
     .then(eventData => this.promisedEvents(eventData))
+    .then(eventData => this.findActivities(this.eventData))
+    .then(eventData => this.getBetweenDates(this.eventData))
     .catch(error => this.catchError(error));
 
 
     var decoded = this.jwtHelper.decodeToken(this.userData.access_token);
-    console.log(decoded);
-    /*this.eventData.forEach(e => {
-      this.results.forEach(a => {
-        if(a.activityId == e.ActivityId){
-         // e.ActivityName = a.activityDec;
-        }
-      });
-    });*/
+    //console.log(decoded);
   }
   promisedEvents(temp : any){
     this.eventData = temp as ZenithEvent[];
-    console.log(this.eventData);
+  
+  }
+
+  findActivities(temp: any){
+    for(let z of temp){
+      for(let r of this.results){
+        if(z.activityId == r.activityId){
+          z.ActivityName = r.activityDec;
+         // console.log(z.ActivityName);
+        }
+      }
+    }
+  }
+
+  getMonday(day){
+    day = new Date(day);
+    var date = day.getDay(),
+    diff = day.getDate() - date + (date == 0 ? -6:1);
+    return new Date(day.setDate(diff));
+  }
+
+  getSunday(){
+    var date = new Date();
+    date = this.getMonday(date);
+    date.setDate(date.getDate() + 6);
+    return date;
+  }
+
+  getBetweenDates(events : any){
+    for(let z of events){
+      z.fromDate = new Date(z.fromDate);
+      z.toDate = new Date(z.toDate);
+      if(z.isActive){
+        if(z.fromDate > this.mondayDate && z.toDate < this.sundayDate){
+          if(this.eventMap.has(z.fromDate.toLocaleDateString())){
+            this.eventMap.get(z.fromDate.toLocaleDateString()).push(z);
+          }else{
+            this.keys.push(z.fromDate.toLocaleDateString());
+            this.eventMap.set(z.fromDate.toLocaleDateString(), new Array<ZenithEvent>());
+            this.eventMap.get(z.fromDate.toLocaleDateString()).push(z);
+          }
+        }
+      }
+    }
+
+    this.keys.sort(function(a, b){
+      return new Date(a).getTime() - new Date(b).getTime();
+    });
+    console.log(this.keys);
   }
 } 
