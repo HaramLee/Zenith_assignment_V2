@@ -1,5 +1,7 @@
 import {Login} from './login';
 import {ZenithEvent} from './zenith-event';
+import {RegisterUser} from './register-user';
+import {User} from './user';
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -39,6 +41,15 @@ export class PostService {
     return this.http.get(url, {headers : eventHeaders})
     .toPromise()
     .then(response =>response.json() as ZenithEvent[])
+    .catch(this.handleError);
+  }
+
+  userRegister(newUser : RegisterUser):Promise<User>{
+    var registerHeaders = new Headers({'Content-Type': 'application/json'});
+    var url = `${this.BASE_URL}/api/account`;
+    return this.http.post(url, newUser, {headers: registerHeaders})
+    .toPromise()
+    .then(res => res.json().data)
     .catch(this.handleError);
   }
 }

@@ -1,31 +1,37 @@
 
 <!-- *ngIf="userData" taken out -->
-<div class="col-md-6 col-md-offset-3 .form-signin">
+<div class="col-md-6 col-md-offset-3">
     <h2>Register</h2>
-    <form name="form" (ngSubmit)="f.form.valid && register()" novalidate>
+    <form name="form" >
         <div class="form-group">
             <label for="firstName">First Name</label>
-            <input type="text" class="form-control" name="firstName" [(ngModel)]="userData.firstName" #firstName="ngModel" required />
+            <input type="text" class="form-control" name="firstName" [(ngModel)]="newUser.firstName" />
    
         </div>
         <div class="form-group">
             <label for="lastName">Last Name</label>
-            <input type="text" class="form-control" name="lastName" [(ngModel)]="userData.lastName" #lastName="ngModel" required />
+            <input type="text" class="form-control" name="lastName" [(ngModel)]="newUser.lastName" />
      
         </div>
         <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="username" [(ngModel)]="newUser.email" />
+       
+        </div>
+        <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" class="form-control" name="username" [(ngModel)]="userData.username" #username="ngModel" required />
+            <input type="text" class="form-control" name="username" [(ngModel)]="newUser.userName" />
        
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" name="password" [(ngModel)]="userData.password" #password="ngModel" required />
+            <input type="password" class="form-control" name="password" [(ngModel)]="newUser.passwordHash" />
 
         </div>
         <div class="form-group">
-            <button [disabled]="loading" class="btn btn-primary">Register</button>
-            <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
+            <br/>
+            <br/>
+           <button (click)="register(newUser)" class="btn btn-primary">Register</button>
         </div>
     </form>
 </div>
