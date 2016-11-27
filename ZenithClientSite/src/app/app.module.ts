@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { PostComponent } from './post/post.component';
 import { LogingScreenComponent } from './loging-screen/loging-screen.component';
 import { RegisterScreenComponent } from './register-screen/register-screen.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { RegisterScreenComponent } from './register-screen/register-screen.compo
     PostComponent,
     LogingScreenComponent,
     RegisterScreenComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,

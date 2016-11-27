@@ -9,5 +9,12 @@ import { PostComponent } from "./post/post.component";
   providers: [PostService]
 })
 export class AppComponent {
-  title = 'app works!';
+  alive : boolean
+  constructor(){
+    if(localStorage.getItem("role") == "true"){
+      this.alive = false;
+    }else{
+      this.alive = true;
+    }
+  }
 }

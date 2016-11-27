@@ -14,46 +14,54 @@ export class PostComponent implements OnInit {
   results: Array<Post>;
   userData : Login;
   eventData : Array<ZenithEvent>;
-  jwtHelper: JwtHelper = new JwtHelper();
-
+  
+  mem : boolean;
   eventMap = new Map<string, Array<ZenithEvent>>();
   keys = new Array<string>();
   mondayDate : Date;
   sundayDate : Date;
+  weekHandler : Date;
 
-  constructor(private postService: PostService) { }
-
-  ngOnInit() {
-    this.postService.getAll().subscribe(
-      data => this.getResults(data),
-      error => console.log(error)
-    );
-    //this.getLoginToken();
-    this.mondayDate = this.getMonday(new Date());
-    this.sundayDate = this.getSunday();
+  constructor(private postService: PostService) { 
+  if(localStorage.getItem("role") == "true"){
+        this.mem = false;
+      }else{
+        this.mem = true;
+      }
   }
 
-  getResults(tmp : any){
-    this.results = tmp as Array<Post>;
+  ngOnInit() {
     this.getLoginToken();
+    this.mondayDate = this.getMonday(new Date());
+    this.sundayDate = this.getSunday(new Date());
+    this.weekHandler = new Date();
   }
 
   getLoginToken():void{
     this.postService.userLogin("a", "P@$$w0rd")
     .then(userData => this.verifyLogin(userData))
     .catch(error => this.catchError(error));
-
-
   }
 
 
   verifyLogin(hello: any){
     this.userData = hello as Login;
-    this.getEvents();
+    this.getActivities();
   }
 
   catchError(error : any){
     console.log(error);
+  }
+
+  getActivities():void{
+    this.postService.getActivities(this.userData.access_token)
+    .then(data => this.promisedActivites(data))
+    .catch(error => this.catchError(error));
+  }
+
+  promisedActivites(temp : any){
+    this.results = temp as Post[];
+    this.getEvents();
   }
 
   getEvents():void{
@@ -63,9 +71,6 @@ export class PostComponent implements OnInit {
     .then(eventData => this.getBetweenDates(this.eventData))
     .catch(error => this.catchError(error));
 
-
-    var decoded = this.jwtHelper.decodeToken(this.userData.access_token);
-    //console.log(decoded);
   }
   promisedEvents(temp : any){
     this.eventData = temp as ZenithEvent[];
@@ -77,7 +82,6 @@ export class PostComponent implements OnInit {
       for(let r of this.results){
         if(z.activityId == r.activityId){
           z.ActivityName = r.activityDec;
-         // console.log(z.ActivityName);
         }
       }
     }
@@ -86,14 +90,12 @@ export class PostComponent implements OnInit {
   getMonday(day){
     day = new Date(day);
     day.setHours(24, 0, 0);
-    console.log(day);
     var date = day.getDay(),
     diff = day.getDate() - date + (date == 0 ? -6:1);
     return new Date(day.setDate(diff));
   }
 
-  getSunday(){
-    var date = new Date();
+  getSunday(date){
     date = this.getMonday(date);
     date.setDate(date.getDate() + 6);
     return date;
@@ -118,5 +120,25 @@ export class PostComponent implements OnInit {
     this.keys.sort(function(a, b){
       return new Date(a).getTime() - new Date(b).getTime();
     });
+  }
+
+  ahead(){
+    this.eventMap = new Map<string, Array<ZenithEvent>>();
+    this.keys = new Array<string>();
+
+    this.weekHandler.setDate(this.weekHandler.getDate() + 7);
+    this.mondayDate = this.getMonday(new Date(this.weekHandler.getFullYear(), this.weekHandler.getMonth(), this.weekHandler.getDate()));
+    this.sundayDate = this.getSunday(new Date(this.weekHandler.getFullYear(), this.weekHandler.getMonth(), this.weekHandler.getDate()));
+    this.getEvents();
+  }
+
+  behind(){
+    this.eventMap = new Map<string, Array<ZenithEvent>>();
+    this.keys = new Array<string>();
+
+    this.weekHandler.setDate(this.weekHandler.getDate() - 7);
+    this.mondayDate = this.getMonday(new Date(this.weekHandler.getFullYear(), this.weekHandler.getMonth(), this.weekHandler.getDate()));
+    this.sundayDate = this.getSunday(new Date(this.weekHandler.getFullYear(), this.weekHandler.getMonth(), this.weekHandler.getDate()));
+    this.getEvents();
   }
 } 

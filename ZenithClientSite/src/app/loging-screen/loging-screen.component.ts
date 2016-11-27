@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {PostService} from '../post.service';
 import {User} from '../user';
 import {Login} from '../login';
+import {RoleReturn} from '../role-return';
 
 @Component({
   selector: 'app-loging-screen',
@@ -11,9 +12,18 @@ import {Login} from '../login';
 export class LogingScreenComponent implements OnInit {
 
   curUser: Login
+  curRole: RoleReturn
+  alive : boolean
   constructor(
     private postService: PostService
-  ) { }
+  ) { 
+  if(localStorage.getItem("role") == "true"){
+      this.alive = false;
+    }else{
+      this.alive = true;
+    }
+
+  }
 
   ngOnInit() {
   }
@@ -28,7 +38,15 @@ export class LogingScreenComponent implements OnInit {
   finishLogin(temp : any){
     this.curUser = temp;
     localStorage.setItem("token", this.curUser.access_token);
-    console.log(this.curUser.access_token);
+    this.postService.getRole(localStorage.getItem("token"))
+    .then(res => this.finishRoles(res))
+    .catch(error => this.catchError(error));
+  }
+
+  finishRoles(tmp : any){
+    this.curRole = tmp;
+    localStorage.setItem("role", this.curRole.value);
+    window.location.reload();
   }
   
   catchError(error : any){

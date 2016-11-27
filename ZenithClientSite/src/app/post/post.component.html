@@ -1,5 +1,10 @@
-<div>
-  
+<div *ngIf="!mem">
+  <div>
+    <button (click)="behind()" class="btn btn-primary"><</button>
+  </div>
+  <div>
+    <button (click)="ahead()" class="btn btn-primary">></button>
+  </div>
 </div>
 
 <div class ="container" style ="widh:50%; padding-top 30px;">
