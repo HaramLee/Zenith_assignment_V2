@@ -3,6 +3,8 @@ import {ZenithEvent} from './zenith-event';
 import {RegisterUser} from './register-user';
 import {User} from './user';
 import {RegisterReturn} from './register-return';
+import {RoleReturn} from './role-return';
+import {Post} from './post';
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -10,7 +12,8 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class PostService {
-  private BASE_URL = "http://localhost:5000";
+  //private BASE_URL = "http://localhost:5000";
+  private BASE_URL = "https://a2.haramlee.info";
   private headers = new Headers({'grant_type': 'password'});
 
   constructor(private http: Http) { }
@@ -20,9 +23,14 @@ export class PostService {
       return Promise.reject(error.message || error);
     }
 
-  getAll() {
-    return this.http.get('http://localhost:5000/api/activity')
-    .map((res: Response) => res.json());
+
+  getActivities(token: string): Promise<Post[]>{
+    var activityHeaders = new Headers({'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': `Bearer ${token}`});
+    var url = `${this.BASE_URL}/api/activity`;
+    return this.http.get(url, {headers: activityHeaders})
+    .toPromise()
+    .then(response => response.json() as Post[])
+    .catch(this.handleError);
   }
 
   userLogin(username : string, password: string): Promise<Login>{
@@ -51,6 +59,15 @@ export class PostService {
     return this.http.post(url, newUser, {headers: registerHeaders})
     .toPromise()
     .then(res => res.json() as RegisterReturn)
+    .catch(this.handleError);
+  }
+
+  getRole(token : string):Promise<RoleReturn>{
+    var roleHeaders = new Headers({'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': `Bearer ${token}`});
+    var url = `${this.BASE_URL}/connect/roles`;
+    return this.http.get(url, {headers : roleHeaders})
+    .toPromise()
+    .then(res => res.json() as RoleReturn)
     .catch(this.handleError);
   }
 }

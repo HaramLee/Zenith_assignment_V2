@@ -15,14 +15,20 @@ export class RegisterScreenComponent implements OnInit {
 curLoginInfo : Login;
  curUser : User;
  registerReturn : RegisterReturn;
+ alive : boolean;
 
   constructor(
     private postService: PostService
-  ) { }
+  ) {
+    if(localStorage.getItem("role") == "true"){
+      this.alive = false;
+    }else{
+      this.alive = true;
+    }
+   }
 
   ngOnInit() {
   }
-
 
   newUser : RegisterUser = new RegisterUser();
   register(newUser: RegisterUser){
@@ -52,7 +58,7 @@ curLoginInfo : Login;
   finishLogin(temp : any){
     this.curLoginInfo = temp;
     localStorage.setItem("token", this.curLoginInfo.access_token);
-    console.log(this.curLoginInfo.access_token);
+    window.location.reload();
   }
 
    catchError(error : any){
