@@ -85,6 +85,8 @@ export class PostComponent implements OnInit {
 
   getMonday(day){
     day = new Date(day);
+    day.setHours(24, 0, 0);
+    console.log(day);
     var date = day.getDay(),
     diff = day.getDate() - date + (date == 0 ? -6:1);
     return new Date(day.setDate(diff));
@@ -113,10 +115,8 @@ export class PostComponent implements OnInit {
         }
       }
     }
-
     this.keys.sort(function(a, b){
       return new Date(a).getTime() - new Date(b).getTime();
     });
-    console.log(this.keys);
   }
 } 
