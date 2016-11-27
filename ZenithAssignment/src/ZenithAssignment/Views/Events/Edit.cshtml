@@ -22,7 +22,7 @@
 <form asp-controller="Events" asp-action="Edit" method="post" class="form-horizontal" role="form">
     <div class="form-horizontal">
         <div asp-validation-summary="All" class="text-danger"></div>
-        @Html.HiddenFor(m => m.EventId, Model.EventId);
+        @Html.HiddenFor(m => m.EventId, Model.EventId)
         <div class="form-group">
             <label asp-for="FromDate" class="col-md-2 control-label"></label>
             <div class="col-md-10">

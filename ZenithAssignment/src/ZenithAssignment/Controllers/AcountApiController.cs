@@ -45,7 +45,7 @@ namespace ZenithAssignment.Controllers
             return _userManager.Users.ToList();
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpGet("~/connect/roles")]
         [Produces("application/json")]
         public async Task<IActionResult> GetRoles()

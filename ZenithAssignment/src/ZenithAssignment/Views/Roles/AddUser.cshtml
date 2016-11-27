@@ -13,7 +13,7 @@
 <form asp-controller="Roles" asp-action="AddUser" method="post" class="form-horizontal" role="form">
     <div class="form-horizontal">
         <div asp-validation-summary="All" class="text-danger"></div>
-        @Html.Hidden("newRoleId", temp);
+        @Html.Hidden("newRoleId", temp)
         <div class="form-group">
             <label asp-for="UserName" class="col-md-2 control-label"></label>
             <div class="col-md-10">
