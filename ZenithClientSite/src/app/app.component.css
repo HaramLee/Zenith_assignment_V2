@@ -1,0 +1,16 @@
+a:link, a:visited{
+    background-color:white;
+    color:black;
+    padding: 14px 25px;
+    text-align:center;
+    text-decoration: none;
+    font-family: Arial;
+    border: 2px solid black;
+    border-radius: 25px;    
+    margin-top: 10px;
+    display:block;
+    width: 10%;
+}
+a:hover{
+    background-color: aquamarine;
+}

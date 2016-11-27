@@ -13,7 +13,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class PostService {
   //private BASE_URL = "http://localhost:5000";
-  private BASE_URL = "https://a2.haramlee.info";
+  private BASE_URL = "http://a2.haramlee.info";
   private headers = new Headers({'grant_type': 'password'});
 
   constructor(private http: Http) { }

@@ -1,20 +1,16 @@
-<div *ngIf="!mem">
-  <div>
+<div id="buttons" *ngIf="!mem">
     <button (click)="behind()" class="btn btn-primary"><</button>
-  </div>
-  <div>
     <button (click)="ahead()" class="btn btn-primary">></button>
-  </div>
 </div>
 
-<div class ="container" style ="widh:50%; padding-top 30px;">
-  <table class="table" *ngFor='let key of keys'>
+<div class ="container" style ="width:100%; padding-top 30px;">
+  <table id="tableHead" class="table" *ngFor='let key of keys'>
     <tr>
       <th colspan="2" style="text-align:center">{{eventMap.get(key)[0].fromDate.toDateString()}}</th>
     </tr>
-    <table class="table" *ngFor='let event of eventMap.get(key)'>
-      <tr>
-        <td width="50%"> {{event.fromDate.toLocaleTimeString() + " - " + event.toDate.toLocaleTimeString()}} </td>
+    <table id="tableBody" class="table" *ngFor='let event of eventMap.get(key)'>
+      <tr colspan="2" id="eventRow">
+        <td> {{event.fromDate.toLocaleTimeString() + " - " + event.toDate.toLocaleTimeString()}} </td>
         <td>{{event.ActivityName}}</td>
       </tr>
     </table>
