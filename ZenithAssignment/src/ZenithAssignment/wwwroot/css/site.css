@@ -48,3 +48,45 @@ textarea {
     display: none
   }
 }
+
+.home-container{
+    width: 65%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.table-home {
+    width:100%;
+}
+
+.row-home {
+    width: 25%;
+    border: 0.5px solid black;
+}
+
+.column-home {
+    width: 25%;
+    padding: 5px;
+    border: 0.5px solid black;
+    font-family: 'Times New Roman';
+   
+}
+
+.column-home3 {
+    width: 50%;
+    border: 0.5px solid black;
+}
+
+.headline {
+    border: 0.5px solid black;
+    background-color:#E0FFFF;
+    padding-top:5px;
+    text-align:center;
+    width: 100%;
+}
+
+.toFromTime label {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    font-weight:normal; 
+}

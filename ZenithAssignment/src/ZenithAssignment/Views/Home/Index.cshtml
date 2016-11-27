@@ -7,14 +7,19 @@
 }
 <br />
 <br />
-<div class="home-container">
+
+@section Scripts {
+    <link rel="stylesheet" href="~/css/site.css" />
+}
+
+<div class="table-responsive">
     @foreach (var c in datelist) // Print the list
     {
         <div class="headline">
             @Html.Label(c)
         </div>
 
-        <table class="table-home">
+        <table class="table table-bordered">
             @foreach (var item in Model)
             {
 
