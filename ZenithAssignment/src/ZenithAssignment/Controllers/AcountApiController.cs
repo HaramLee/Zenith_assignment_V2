@@ -45,7 +45,7 @@ namespace ZenithAssignment.Controllers
             return _userManager.Users.ToList();
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpGet("~/connect/roles")]
         [Produces("application/json")]
         public async Task<IActionResult> GetRoles()
@@ -87,10 +87,17 @@ namespace ZenithAssignment.Controllers
 
             if (!result.Succeeded)
             {
-                return BadRequest(ModelState);
+                return BadRequest(new OpenIdConnectResponse
+                {
+                    Error = OpenIdConnectConstants.Errors.InvalidGrant,
+                    ErrorDescription = "The registration is invalid."
+                });
             }
 
-            return Ok();
+            return Ok(new JsonResult(model.UserName)
+            {
+                StatusCode = 200
+            });
         }
 
 
