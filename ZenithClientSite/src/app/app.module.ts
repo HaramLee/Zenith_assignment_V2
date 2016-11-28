@@ -26,10 +26,6 @@ import { LogoutComponent } from './logout/logout.component';
       {
         path: 'login',
         component: LogingScreenComponent
-      },
-      {
-        path: 'register',
-        component: RegisterScreenComponent
       }
     ])
   ],

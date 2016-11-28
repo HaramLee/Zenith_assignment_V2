@@ -8,9 +8,14 @@ a:link, a:visited{
     border: 2px solid black;
     border-radius: 25px;    
     margin-top: 10px;
-    display:block;
+    display:inline-block;
     width: 10%;
+
 }
 a:hover{
     background-color: aquamarine;
+}
+.anchorStyle{
+    text-align: center;
+    padding-bottom: 5px;
 }

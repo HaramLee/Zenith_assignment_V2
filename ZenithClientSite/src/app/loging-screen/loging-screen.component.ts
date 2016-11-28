@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 import {PostService} from '../post.service';
 import {User} from '../user';
 import {Login} from '../login';
@@ -15,7 +16,8 @@ export class LogingScreenComponent implements OnInit {
   curRole: RoleReturn
   alive : boolean
   constructor(
-    private postService: PostService
+    private postService: PostService,
+    private router : Router
   ) { 
   if(localStorage.getItem("role") == "true"){
       this.alive = false;
@@ -46,6 +48,7 @@ export class LogingScreenComponent implements OnInit {
   finishRoles(tmp : any){
     this.curRole = tmp;
     localStorage.setItem("role", this.curRole.value);
+    this.router.navigate(['../']);
     window.location.reload();
   }
   
